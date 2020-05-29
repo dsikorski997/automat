@@ -15,4 +15,5 @@ protected:
     std::fstream database; //uchwyt zewnêtrznego pliku bazy danych
     std::string database_path; //sciezka do pliku bazy danych
     bool check_database_file(); //sprawdza czy plik zostal poprawnie otwarty, jesli tak zwraca true, jesli nie to konczy program
+    void read_database(); //funkcja wczytujaca dane z bazy przy uruchomieniu programu
 };
