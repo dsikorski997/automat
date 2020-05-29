@@ -11,10 +11,10 @@ std::vector<int> Db::get_data(){ //wypisuje dane do podanego wektora, nie sprawd
 
 void Db::check_data(std::vector<int> _data){
     if(_data.size() == 16){  //sprawdza czy wczytala sie odpowiednia ilosc pól
-            std::cout << "\nsprawdzam dane\n";
+            std::cout << "\ncorrect data\n";
     }
     else{
-        std::cout << "\nblad wczytywania danych, ilosc danych sie nie zgadza: "  << _data.size() << std::endl;
+        std::cout << "\ninvalid amount of data in the vector 18 != "  << _data.size() << std::endl;
         exit(3);
     }
 }
@@ -22,10 +22,11 @@ void Db::check_data(std::vector<int> _data){
 bool Db::check_database_file(){
 
     if(database.good() == true){
+        std::cout << "\ndatabase opened correctly\n";
         return true;
     }
     else{
-        std::cout << "\nblad otwarcia pliku: " << database_path << std::endl;
-        exit(3);
+        std::cout << "\ndatabase open error: " << database_path << std::endl;
+        exit(3);  //jeœli nie to koñczy program z kodem 3
     }
 }
