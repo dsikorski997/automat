@@ -53,6 +53,7 @@ void Db::write_database(){
     if(check_database_file() == true){
         for(size_t i = 0 ; i < data.size() ; i++){
             database << std::to_string(data[i]); //konwertuje inta na stringa i zapisuje do pliku
+            if(i < data.size() - 1) database << std::endl;
         }
         database.close();
     }
