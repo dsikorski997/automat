@@ -58,3 +58,16 @@ void Db::write_database(){
         database.close();
     }
 }
+
+Db::Db()
+{
+    set_database_path("database.txt");
+    read_database();
+}
+
+Db::~Db()
+{
+    write_database();
+}
+
+
