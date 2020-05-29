@@ -42,6 +42,18 @@ void Db::read_database(){  //odczytuje baze pod podana sciezka i zapisuje do wek
             data.push_back(std::stoi(tmp)); //przekonwertuj na inta i dodaj na koniec wektora
         }
             database.close(); //po pobraniu danych zamyka plik
-            check_data(data);  //wywo³uje
+            check_data(data);  //wywo³uje funkcje check_data w celu sprawdzenia danych po wczytaniu
+    }
+}
+
+void Db::write_database(){
+    std::cout << "\nwriting database\n";
+    database.open(database_path.c_str(), std::ios::out);
+
+    if(check_database_file() == true){
+        for(size_t i = 0 ; i < data.size() ; i++){
+            database << std::to_string(data[i]) << std::endl; //konwertuje inta na stringa i zapisuje do pliku
+        }
+        database.close();
     }
 }
