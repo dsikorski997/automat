@@ -18,3 +18,14 @@ void Db::check_data(std::vector<int> _data){
         exit(3);
     }
 }
+
+bool Db::check_database_file(){
+
+    if(database.good() == true){
+        return true;
+    }
+    else{
+        std::cout << "\nblad otwarcia pliku: " << database_path << std::endl;
+        exit(3);
+    }
+}
