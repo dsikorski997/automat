@@ -11,4 +11,5 @@ public:
     ~Db();
 protected:
     std::vector<int> data; //wektor przechowuj¹cy wczytane dane
+    void check_data(std::vector<int>); //sprawdza czy dane sa poprawnie wczytane
 };
