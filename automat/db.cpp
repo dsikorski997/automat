@@ -33,13 +33,13 @@ bool Db::check_database_file(){
 
 void Db::read_database(){  //odczytuje baze pod podana sciezka i zapisuje do wektora
     std::cout << "\nloading database\n";
-    database.open(database_path, std::ios::in);
+    database.open(database_path.c_str(), std::ios::in);
     if(check_database_file()){  //wywo³uje funkcje check_database_file i jeœli funkcja zwróci true to idzie dalej
         std::cout << "\nread database to ram\n";
         while(!database.eof()){  //czytaj do konca pliku database
             std::string tmp;    //zmienna tymczasowa
             getline(database, tmp);  //odczytaj linie z database i zapisz do tmp
-            data.push_back(tmp); //przekonwertuj na inta i dodaj na koniec wektora
+            data.push_back(std::stoi(tmp)); //przekonwertuj na inta i dodaj na koniec wektora
         }
             database.close(); //po pobraniu danych zamyka plik
             check_data(data);  //wywo³uje
