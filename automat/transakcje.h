@@ -7,6 +7,7 @@ class Transakcje
 public:
     void set_data(std::vector<int>);
     std::vector<int> get_data();
+    void test()
     Transakcje();
     ~Transakcje();
 

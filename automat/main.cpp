@@ -6,11 +6,11 @@ using namespace std;
 int main()
 {
 Db db;
+Transakcje transakcje;
+transakcje.set_data(db.get_data());
 
-std::vector<int> a;
-a = db.get_data();
-for(size_t i = 0 ; i < a.size() ; i++) a[i];
-std::cout << "---------";
-db.set_data(a);
+transakcje.test();
+
+db.set_data(transakcje.get_data());
 return 0;
 }
