@@ -16,6 +16,12 @@ double Transakcje::calc(std::vector<int> pay){
     return static_cast<float>(pay[0]*5 + pay[1]*2 + pay[2]*1 + pay[3]*0.5 + pay[4]*0.2 + pay[5]*0.1);
 }
 
+double Transakcje::get_coins(){
+    double tmp = calc(data); //zapisuje sume wplaconych monet
+    for(size_t i = 0 ; i <= 5 ; i++) data[i] = 0; //zeruje dane w bazie
+    return tmp; //zwraca sume
+}
+
 Transakcje::Transakcje()
 {
 

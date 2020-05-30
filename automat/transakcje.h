@@ -8,7 +8,7 @@ public:
     void set_data(std::vector<int>);
     std::vector<int> get_data();
     void test()
-
+    double get_coins();
     Transakcje();
     ~Transakcje();
 
