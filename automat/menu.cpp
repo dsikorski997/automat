@@ -36,14 +36,21 @@ flaga_menu_wplaty = 1;
         std::cin>>wybor;
 
 
-            switch(wybor){
+        switch(wybor){
                 case 1: wplata[0]++; break;
                 case 2: wplata[1]++; break;
                 case 3: wplata[2]++; break;
                 case 4: wplata[3]++; break;
                 case 5: wplata[4]++; break;
                 case 6: wplata[5]++; break;
-                case 7: wyswietl_menu_wyboru(); flaga_menu_wplaty = 0; break;
+                case 7: if(suma >= 2.00){ //sprawdza czy do automatu wrzucono wystarczajaca ilosc pieniedzy, zanim przejdzie dalej
+                            wyswietl_menu_wyboru();
+                            flaga_menu_wplaty = 0; break; //przenosi do sekcji menu wyboru
+                        }
+                        else{
+                            std::cout << "niewystarczajaca ilosc pieniedzy";
+                            break;
+                        }
                 case 9: wyswietl_menu_serwisowe(); flaga_menu_wplaty = 0; break; //ukryta opcja wejscia w menu serwisowe
                 case 0: flaga_menu_wplaty = 0; break; //wyjscie z programuplan jest taki
             }
@@ -54,11 +61,24 @@ flaga_menu_wplaty = 1;
 }
 void Menu::wyswietl_menu_wyboru()
 {
-std::cout << "Coca Cola";
-std::cout << "\nFanta";
-std::cout << "\nPepsi";
-std::cout << "\nSprite";
-//Db::test();
+flaga_menu_wyboru = 1;
+int wybor = 0;
+while(flaga_menu_wyboru)
+std::cout << "1: Coca Cola \t2zl";
+std::cout << "\n2: Fanta \t2zl";
+std::cout << "\n3: Pepsi \t2zl";
+std::cout << "\n4: Sprite \t2zl";
+std::cin >> wybor;
+    if(Transakcje::check_prod_avail(data, wybor)==true){
+        //w tym momencie zakladamy ze suma byla wystarczajaca, napoj dostepny i wydany
+        flaga_menu_wyboru = 0;
+        flaga_menu_wplaty = 1;
+
+    }
+    else{
+        flaga_menu_wyboru = 0;
+        flaga_menu_wplaty = 1;
+    }
 }
 
 void Menu::wyswietl_menu_serwisowe()
