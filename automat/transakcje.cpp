@@ -22,6 +22,24 @@ double Transakcje::get_coins(){
     return tmp; //zwraca sume
 }
 
+bool Transakcje::input_check(int input){ //przyjmuje wybor
+    if(input >=1 && input <= 6){  //sprawdza czy jest w odpowiednim zakresie
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
+bool Transakcje::prod_avail(int prod){ //sprawdza czy produkt jest dostepny
+    if(data[prod+11] > 0){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 Transakcje::Transakcje()
 {
 
