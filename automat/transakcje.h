@@ -9,6 +9,7 @@ public:
     std::vector<int> get_data();
     void test()
     double get_coins();
+    int processing(std::vector<int>, double, int);
     Transakcje();
     ~Transakcje();
 
@@ -17,4 +18,5 @@ protected:
     double calc(std::vector<int>);
     bool input_check(int);
     bool prod_avail(int);
+    void give_prod(int);
 };

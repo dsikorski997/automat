@@ -40,6 +40,44 @@ bool Transakcje::prod_avail(int prod){ //sprawdza czy produkt jest dostepny
     }
 }
 
+void Transakcje::give_prod(int prod){ //przyjmuje numer produktu 1-6 i zdejdmuje 1szt ze stanu
+    data[prod+11]--;
+}
+
+int Transakcje::processing(std::vector<int> pay, double price, int set){ //wektor z wplata, cena , wybor
+    double sum  = calc(pay);
+//liczy sume wplaty na potrzebe klasy
+
+    if(input_check(set)){                //sprawdza poprawnosc danych
+        if(prod_avail(set)){                //sprawdza czy produkt jest dostepny
+            if(sum >= price){               //sprawdza czy kwota wplaty jest wystarczajaca
+                give_prod(set);             //wydaje produkt
+                payment(pay);               //wplaca pieniadze do kasetki
+                if(1/*rest(sum - price)*/){
+                    return 0;
+                }
+                else{
+                    return 4;
+                }
+
+            }
+            else{
+
+                return 1;
+            }
+        }
+        else{
+
+            return 2;
+        }
+    }
+    else{
+
+        return 3;
+    }
+
+}
+
 Transakcje::Transakcje()
 {
 
