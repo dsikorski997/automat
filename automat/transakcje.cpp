@@ -40,6 +40,40 @@ bool Transakcje::prod_avail(int prod){ //sprawdza czy produkt jest dostepny
     }
 }
 
+void Transakcje::payment(std::vector<int> pay){
+    for(int i = 0 ; i <= 5 ; i++) data[i] += pay[i]; //wpisuje wplacone monety do wektora danych
+}
+
+bool Transakcje::rest(double money){
+    const std::vector<double> denom{ 500, 200, 100, 50, 20, 10};
+    int j = 0;
+    money = money * 100;
+//std::cout << "/n/nsuma * 10: " << money <<  "\n\n";
+    do{
+        for(int i = 0 ; i <= 5 ; i++){
+            if((money - denom[i] >= 0) && (data[i+5] > 0)){
+                //std::cout << "\nsuma przed: " << suma << std::endl;
+                std::cout << "\nWydaje\n";
+                std::cout << denom[i]/100 << "zl  ";
+                money = money - denom[i];
+                data[i+5]--;
+            //std::cout << "suma: " << suma << std::endl;
+            //std::cout << "\nsuma po: " << suma << std::endl;
+            //std::cout << "i: " << i << std::endl;
+            }
+        }
+        j++;
+    //std::cout << std::endl << "j: " << j << std::endl;
+    }while(money > 0 && j <= 15);
+
+    if(money > 0){
+        return false;
+    }
+    else{
+        return true;
+    }
+}
+
 void Transakcje::give_prod(int prod){ //przyjmuje numer produktu 1-6 i zdejdmuje 1szt ze stanu
     data[prod+11]--;
 }

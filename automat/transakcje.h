@@ -19,4 +19,6 @@ protected:
     bool input_check(int);
     bool prod_avail(int);
     void give_prod(int);
+    void payment(std::vector<int>);
+    bool rest(double);
 };
