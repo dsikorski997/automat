@@ -10,6 +10,9 @@ public:
     void test()
     double get_coins();
     int processing(std::vector<int>, double, int);
+    int add_prod(int, int);
+    int prod_quan(int);
+    int coins_quan(int);
     Transakcje();
     ~Transakcje();
 

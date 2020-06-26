@@ -74,6 +74,24 @@ bool Transakcje::rest(double money){
     }
 }
 
+int Transakcje::add_prod(int prod, int quan){ //przyjmuje produkt do dodania i ilosc tego prrodkuktu
+    if(prod >=1 && prod <= 6){ //sprawdza dane wejsciowe dla produktu
+        data[prod+11] += quan; //dodaje ilosc danego produktu w bazie
+        return 0;
+    }
+    else{
+        return 1; //w przypadku blednych danych zwraca 0
+    }
+}
+
+int Transakcje::prod_quan(int prod){
+    return static_cast<int>(data[prod+11]); //zwraca sume produktow po dodaniu
+}
+
+int Transakcje::coins_quan(int denom){
+    return static_cast<int>(data[denom+5]); //zwraca sume monet danego nominalu po wplacie
+}
+
 void Transakcje::give_prod(int prod){ //przyjmuje numer produktu 1-6 i zdejdmuje 1szt ze stanu
     data[prod+11]--;
 }
