@@ -13,7 +13,23 @@
     float suma = 0; //zmienna przechowujaca sume wplaty
     std::vector<int> wplata{0,0,0,0,0,0}; //tablica przechowujaca dane o ilosci wrzuconych monet
 
+void obsluga_processing(int kod_z_processing, bool &flaga_menu_wyboru, bool &flaga_menu_wplaty, std::vector<int> &wplata, float &suma){
+    switch(kod_z_processing){
+        case 0:
+            std::cout << "\nWydano produkt\n";
+            flaga_menu_wyboru = 0; flaga_menu_wplaty = 1; for(size_t z = 0 ; z <= 5 ; z++)wplata[z]=0; suma = 0.00; break;
+        case 1:
+            std::cout << "\nZa mala kwota wplaty\n"; flaga_menu_wyboru = 0; flaga_menu_wplaty = 1; break;
+        case 2:
+            std::cout << "\nBrak produktu. Dokonaj innego wyboru\n"; flaga_menu_wyboru = 0; flaga_menu_wplaty = 1; break;
+        case 3:
+            std::cout << "\nNieprawidlowy wybor produktu\n"; flaga_menu_wyboru = 0; flaga_menu_wplaty = 1; break;
+        case 4:
+            std::cout << "\nBrak mozliwosci wydania reszty, skontaktuj sie z obsluga\n"; flaga_menu_wyboru = 0; flaga_menu_wplaty = 1; for(size_t z = 0 ; z <= 5 ; z++)wplata[z]=0; suma = 0.00; break;
+    }
 
+
+}
 
 int main()
 {
@@ -63,6 +79,40 @@ while(menu){
             }
     suma = static_cast<float>(wplata[0]*5 + wplata[1]*2 + wplata[2]*1 + wplata[3]*0.5 + wplata[4]*0.2 + wplata[5]*0.1); //rzutowanie na float zeby obsluzyc grosze
     }
+
+system("cls");
+wybor = 0;
+while(flaga_menu_wyboru){
+    system("cls");
+    std::cout << "\n1: Coca Cola    2zl";
+    std::cout << "\n2: Fanta \t2zl";
+    std::cout << "\n3: Pepsi \t2zl";
+    std::cout << "\n4: Sprite \t2zl";
+    std::cout << "\n5: Burn \t3zl";
+    std::cout << "\n6: Red Bull \t4.50zl\n";
+    std::cin >> wybor;
+        if(wybor >=1 && wybor <= 6){
+        switch(wybor){
+            case 1: obsluga_processing(transakcje.processing(wplata, 2.00, wybor), flaga_menu_wyboru, flaga_menu_wplaty, wplata, suma); break;
+
+            case 2: obsluga_processing(transakcje.processing(wplata, 2.00, wybor), flaga_menu_wyboru, flaga_menu_wplaty, wplata, suma); break;
+
+            case 3: obsluga_processing(transakcje.processing(wplata, 2.00, wybor), flaga_menu_wyboru, flaga_menu_wplaty, wplata, suma); break;
+
+            case 4: obsluga_processing(transakcje.processing(wplata, 2.00, wybor), flaga_menu_wyboru, flaga_menu_wplaty, wplata, suma); break;
+
+            case 5: obsluga_processing(transakcje.processing(wplata, 3.00, wybor), flaga_menu_wyboru, flaga_menu_wplaty, wplata, suma); break;
+
+            case 6: obsluga_processing(transakcje.processing(wplata, 4.50, wybor), flaga_menu_wyboru, flaga_menu_wplaty, wplata, suma); break;
+        }
+        }
+        else{
+            std::cout << "\nnieprawidlowy wybor\n";
+
+        }
+Sleep(4000);
+}
+
 }
 return 0;
 }
