@@ -12,6 +12,7 @@
     int wybor = 0; //zmienna do switcha
     float suma = 0; //zmienna przechowujaca sume wplaty
     std::vector<int> wplata{0,0,0,0,0,0}; //tablica przechowujaca dane o ilosci wrzuconych monet
+    std::string haslo_serwisowe = "po123";
 
 void obsluga_processing(int kod_z_processing, bool &flaga_menu_wyboru, bool &flaga_menu_wplaty, std::vector<int> &wplata, float &suma){
     switch(kod_z_processing){
@@ -29,6 +30,16 @@ void obsluga_processing(int kod_z_processing, bool &flaga_menu_wyboru, bool &fla
     }
 
 
+}
+
+void sprawdz_haslo(bool &flaga_menu_serwisowe, bool &flaga_menu_wplaty, bool &flaga_menu_wyboru){
+std::string haslo;
+std::cin >> haslo;
+    if(haslo == haslo_serwisowe){
+        flaga_menu_serwisowe = 1;
+        flaga_menu_wplaty = 0;
+        flaga_menu_wyboru = 0;
+    }
 }
 
 int main()
@@ -111,6 +122,24 @@ while(flaga_menu_wyboru){
 
         }
 Sleep(4000);
+}
+
+while(flaga_menu_serwisowe){
+        system("cls");
+        wybor = 0;
+        std::cout << "\nMENU SERWISOWE\n";
+        std::cout << "\n1: Wyplac pieniadze z automatu\n";
+        std::cout << "\n2: Wplac pieniadze do wydawania reszty\n";
+        std::cout << "\n3: Dodaj produkty\n";
+        std::cout << "\n4: Wyjdz z menu serwisowego\n";
+        std::cin >> wybor;
+            switch(wybor){
+                case 1: std::cout << "\nOtwieram kasteke\nwyplacam: " << transakcje.get_coins(); Sleep(4000); break;
+                case 2: flaga_menu_srv_wplac = 1; flaga_menu_serwisowe = 0; break; //dopisac kolejny while i petle obslugujaca
+                case 3: flaga_menu_srv_dodaj = 1; flaga_menu_serwisowe = 0; break;
+                case 4: flaga_menu_wplaty = 1; flaga_menu_serwisowe = 0; break;
+            }
+
 }
 
 }
