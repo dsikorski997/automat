@@ -166,6 +166,30 @@ while(flaga_menu_srv_wplac){
     }
 }
 
+while(flaga_menu_srv_dodaj){
+    system("cls");
+    std::cout << "\nKtory produkt dokladasz\n";
+    std::cout << "\n1: Coca Cola\t" << transakcje.prod_quan(1);
+    std::cout << "\n2: Fanta \t" << transakcje.prod_quan(2);
+    std::cout << "\n3: Pepsi \t" << transakcje.prod_quan(3);
+    std::cout << "\n4: Sprite \t" << transakcje.prod_quan(4);
+    std::cout << "\n5: Burn \t" << transakcje.prod_quan(5);
+    std::cout << "\n6: Red Bull \t" << transakcje.prod_quan(6);
+    std::cout << "\n7: powrot\n";
+    int prod;
+    int ile;
+    std::cin >> prod;
+    if(prod == 7){
+        flaga_menu_serwisowe = 1;
+        flaga_menu_srv_dodaj = 0;
+    }
+    else{
+    std::cout << "\npodaj ilosc\n";
+    std::cin >> ile;
+    transakcje.add_prod(prod,ile);
+    }
+}
+
 }
 db.set_data(transakcje.get_data());
 return 0;
