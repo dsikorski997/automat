@@ -142,6 +142,31 @@ while(flaga_menu_serwisowe){
 
 }
 
+while(flaga_menu_srv_wplac){
+    system("cls");
+    std::cout<<"\nPodaj wplacany nominal\tilosc w automacie";
+    std::cout<<"\n1: 5zl\t\t\t\t" << transakcje.coins_quan(1);
+    std::cout<<"\n2: 2zl\t\t\t\t" << transakcje.coins_quan(2);
+    std::cout<<"\n3: 1zl\t\t\t\t" << transakcje.coins_quan(3);
+    std::cout<<"\n4: 0.50z\t\t\t" << transakcje.coins_quan(4);
+    std::cout<<"\n5: 0.20zl\t\t\t" << transakcje.coins_quan(5);
+    std::cout<<"\n6: 0.10zl\t\t\t" << transakcje.coins_quan(6);
+    std::cout<<"\n7: powrot\n";
+    int nom;
+    int ile;
+    std::cin >> nom;
+    if(nom == 7){
+        flaga_menu_serwisowe = 1;
+        flaga_menu_srv_wplac = 0;
+    }
+    else{
+    std::cout << "\npodaj ilosc\n";
+    std::cin >> ile;
+    transakcje.add_coins(nom,ile);
+    }
 }
+
+}
+db.set_data(transakcje.get_data());
 return 0;
 }
